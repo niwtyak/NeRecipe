@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NeRecipe</string>
+    <string name="tab_text_1">Рецепты</string>
+    <string name="tab_text_2">Избраные</string>
+    <string name="new_recipe_button">Добавить новый рецепт</string>
+    <string name="remove">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="edit_recipe_title">Название</string>
+    <string name="edit_recipe_author">Автор</string>
+    <string name="select_image">Выбрать изображение</string>
+    <string name="search">Поиск</string>
+    <string name="category_european">Европейская</string>
+    <string name="category_pan_asian">Паназиатская</string>
+    <string name="category_asian">Азиатская</string>
+    <string name="category_eastern">Восточная</string>
+    <string name="category_american">Американская</string>
+    <string name="category_russian">Русская</string>
+    <string name="category_mediterranean">Средиземноморская</string>
+</resources>

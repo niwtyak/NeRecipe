@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">NeRecipe</string>
+    <string name="tab_text_1">Recipes</string>
+    <string name="tab_text_2">Favorites</string>
+    <string name="category_european">European</string>
+    <string name="category_asian">Asian</string>
+    <string name="category_pan_asian">Pan-Asian</string>
+    <string name="category_eastern">Eastern</string>
+    <string name="category_american">American</string>
+    <string name="category_russian">Russian</string>
+    <string name="category_mediterranean">Mediterranean</string>
+    <string name="new_recipe_button">New recipe button</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Edit</string>
+    <string name="step_number" translatable="false">%1$d.</string>
+    <string name="edit_recipe_title">Title</string>
+    <string name="edit_recipe_author">Author</string>
+    <string name="select_image">Select image</string>
+    <string name="search">Search</string>
+
+
+</resources>
