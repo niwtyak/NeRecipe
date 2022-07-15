@@ -76,7 +76,7 @@ class RecipeDetailsFragment : Fragment() {
             }
 
             val stepsAdapter = RecipeStepsAdapter()
-            binding.stepsRecycleView.adapter =stepsAdapter
+            binding.stepsRecycleView.adapter = stepsAdapter
             stepsAdapter.submitList(recipeViewModel.getSteps(args.recipeId))
         }
     }.root

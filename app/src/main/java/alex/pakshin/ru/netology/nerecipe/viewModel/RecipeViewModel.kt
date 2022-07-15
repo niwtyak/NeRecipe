@@ -73,13 +73,8 @@ class RecipeViewModel(
         categoriesList: List<String>? = categoryList.value,
         favorite:Boolean = favoriteTab.value == true) {
         filteredData.value = repository.search(if (query.isNullOrBlank()) "%%" else query,categoriesList,favorite)
-
-        println("query $query favorite $favorite")
-        println(categoriesList)
-        println(filteredData.value)
     }
 
 
     override fun onDrag(firstRecipe: Recipe, secondRecipe: Recipe) = repository.swapPositions(firstRecipe,secondRecipe)
-
 }

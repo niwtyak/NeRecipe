@@ -121,7 +121,6 @@ class FeedFragment : Fragment(), SearchView.OnQueryTextListener {
 
             recipeViewModel.filteredData.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
-                println(it)
             }
 
             recipeViewModel.favoriteTab.observe(viewLifecycleOwner) {

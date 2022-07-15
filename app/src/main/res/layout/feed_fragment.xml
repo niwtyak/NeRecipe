@@ -9,6 +9,7 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filterGroup"
+        android:padding="@dimen/common_spacing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -71,7 +72,6 @@
             android:checked="true"
             android:text="@string/category_mediterranean" />
     </com.google.android.material.chip.ChipGroup>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeRecycleView"

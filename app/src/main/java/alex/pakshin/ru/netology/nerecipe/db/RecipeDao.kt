@@ -12,7 +12,7 @@ interface RecipeDao {
     fun getAll(): LiveData<List<RecipeEntity>>
 
     @Transaction
-    @Query("SELECT * FROM recipes WHERE id = :recipeId ")
+    @Query("SELECT * FROM recipes WHERE id = :recipeId")
     fun getRecipeWithSteps(recipeId: Long): RecipeWithSteps
 
     @Query("UPDATE recipes SET title = :title,author = :author, category = :category, position = :position WHERE id = :id")

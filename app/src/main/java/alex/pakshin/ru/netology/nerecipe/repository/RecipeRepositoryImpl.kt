@@ -39,7 +39,7 @@ class RecipeRepositoryImpl(
     }
 
     override fun getSteps(recipeId: Long) =
-        recipeDao.getRecipeWithSteps(recipeId).steps.map { it.toRecipeStep() }
+        recipeDao.getRecipeWithSteps(recipeId).steps.map { it.toRecipeStep() }.sortedBy { it.step }
 
     override fun delete(recipeId: Long) = recipeDao.removeById(recipeId)
 
