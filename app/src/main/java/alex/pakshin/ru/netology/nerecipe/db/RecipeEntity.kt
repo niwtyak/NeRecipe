@@ -15,6 +15,8 @@ class RecipeEntity(
     val author: String,
     @ColumnInfo(name = "category")
     val category: String,
+    @ColumnInfo(name = "position")
+    val position: Long,
     @ColumnInfo(name = "favorite")
     val favorite: Boolean
 )

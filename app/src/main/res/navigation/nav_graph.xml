@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/feedFragment"
         android:name="alex.pakshin.ru.netology.nerecipe.ui.main.FeedFragment"
-        android:label="feed_fragment"
+        android:label="@string/main_fragment"
         tools:layout="@layout/feed_fragment" >
         <action
             android:id="@+id/to_recipeDetailsFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/recipeDetailsFragment"
         android:name="alex.pakshin.ru.netology.nerecipe.ui.main.RecipeDetailsFragment"
-        android:label="RecipeDetailsFragment" >
+        android:label="@string/details_fragment" >
         <argument
             android:name="recipeId"
             app:argType="long" />
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/recipeContentFragment"
         android:name="alex.pakshin.ru.netology.nerecipe.ui.main.RecipeContentFragment"
-        android:label="RecipeContentFragment" >
+        android:label="@string/content_fragment" >
         <argument
             android:name="recipeId"
             app:argType="long"             />

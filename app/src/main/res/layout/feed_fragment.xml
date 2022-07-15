@@ -7,12 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.FeedFragment">
 
-    <androidx.appcompat.widget.SearchView
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filterGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/searchView"/>
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/recipeRecycleView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_european"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_european" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_asian"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_asian" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_pan_asian"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_pan_asian" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_eastern"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_eastern" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_american"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_american" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_russian"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_russian" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_mediterranean"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/category_mediterranean" />
+    </com.google.android.material.chip.ChipGroup>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeRecycleView"
@@ -20,8 +79,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/tabs"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
-         />
+        app:layout_constraintTop_toBottomOf="@id/filterGroup" />
 
 
     <com.google.android.material.tabs.TabLayout
@@ -30,8 +88,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

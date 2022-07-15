@@ -62,6 +62,7 @@ class RecipeDetailsFragment : Fragment() {
                 recipeTitle.text = recipe.title
                 recipeAuthor.text = recipe.author
                 favorite.isChecked = recipe.favorite
+                recipeCategory.text =recipe.category.localizedName
 
                 options.setOnClickListener {
                     popupMenu.show()

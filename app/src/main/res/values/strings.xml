@@ -2,6 +2,9 @@
     <string name="app_name">NeRecipe</string>
     <string name="tab_text_1">Recipes</string>
     <string name="tab_text_2">Favorites</string>
+    <string name="main_fragment">Main</string>
+    <string name="content_fragment">Editing</string>
+    <string name="details_fragment">Recipe</string>
     <string name="category_european">European</string>
     <string name="category_asian">Asian</string>
     <string name="category_pan_asian">Pan-Asian</string>
@@ -17,6 +20,7 @@
     <string name="edit_recipe_author">Author</string>
     <string name="select_image">Select image</string>
     <string name="search">Search</string>
+    <string name="category">Category</string>
 
 
 </resources>

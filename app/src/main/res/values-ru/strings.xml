@@ -6,6 +6,7 @@
     <string name="new_recipe_button">Добавить новый рецепт</string>
     <string name="remove">Удалить</string>
     <string name="edit">Изменить</string>
+    <string name="main_fragment">Главная</string>
     <string name="edit_recipe_title">Название</string>
     <string name="edit_recipe_author">Автор</string>
     <string name="select_image">Выбрать изображение</string>
@@ -17,4 +18,7 @@
     <string name="category_american">Американская</string>
     <string name="category_russian">Русская</string>
     <string name="category_mediterranean">Средиземноморская</string>
+    <string name="content_fragment">Редактирование</string>
+    <string name="details_fragment">Рецепт</string>
+    <string name="category">Категория</string>
 </resources>

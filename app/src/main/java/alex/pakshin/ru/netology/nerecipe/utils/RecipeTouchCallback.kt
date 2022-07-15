@@ -1,18 +1,17 @@
 package alex.pakshin.ru.netology.nerecipe.utils
 
-import alex.pakshin.ru.netology.nerecipe.adapter.RecipeEditInteractionListener
-import alex.pakshin.ru.netology.nerecipe.adapter.RecipeStepsEditAdapter
+import alex.pakshin.ru.netology.nerecipe.adapter.*
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchCallback(private val listener: RecipeEditInteractionListener) : ItemTouchHelper.Callback() {
+class RecipeTouchCallback(private val listener: RecipeInteractionListener) : ItemTouchHelper.Callback() {
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
     ): Int {
         val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
-        val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
+        val swipeFlags = 0
         return makeMovementFlags( dragFlags, swipeFlags )
     }
 
@@ -24,19 +23,15 @@ class ItemTouchCallback(private val listener: RecipeEditInteractionListener) : I
         val from = viewHolder.adapterPosition
         val to = target.adapterPosition
 
-        val adapter = recyclerView.adapter as RecipeStepsEditAdapter
+        val adapter = recyclerView.adapter as RecipeFeedAdapter
         val list = adapter.currentList.toMutableList()
 
-        list[from] = list[to].copy(step = list[from].step )
-            .also { list[to] = list[from].copy(step = list[to].step) }
-
-        listener.onDrag(list)
+        listener.onDrag(list[from],list[to])
 
         return true
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        listener.onSwipe(viewHolder.adapterPosition.toLong())
     }
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {

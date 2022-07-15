@@ -20,35 +20,34 @@ class RecipeViewModel(
         recipeDao = AppDb.getInstance(context = application).recipeDao
     )
 
-
     val data by repository::data
 
-    val searchQuery = MutableLiveData<String>()
+    val searchQuery = MutableLiveData("")
+
+    val categoryList = MutableLiveData(Recipe.Companion.RecipeCategory.values().map { it.categoryName })
 
     val navigateRecipeContentScreenEvent = SingleLiveEvent<Long>()
 
     val navigateRecipeDetailsScreenEvent = SingleLiveEvent<Long>()
 
-    // val selectItemEvent = SingleLiveEvent<Int>()
-
-    // var currentPosition = MutableLiveData<Int?>(null)
+    val favoriteTab=MutableLiveData(false)
 
     var filteredData = Transformations.distinctUntilChanged(data) as MutableLiveData<List<Recipe>>
 
-    private fun setDefaultData() {
+    fun setDefaultData() {
         filteredData.value = data.value
     }
 
     fun setQuery(query: String) {
-        this.searchQuery.value = query
+        searchQuery.value = query
+    }
+
+    fun setCategoryList(categories:List<String>){
+        categoryList.value=categories
     }
 
     fun filterFavorites(index: Int) {
-        if (index == 1) {
-            filteredData.value = data.value?.filter { it.favorite }
-        } else
-            setDefaultData()
-
+       favoriteTab.value = index == 1
     }
 
     override fun onRecipeClicked(recipe: Recipe) {
@@ -69,7 +68,18 @@ class RecipeViewModel(
 
     fun getSteps(recipeId: Long) = repository.getSteps(recipeId)
 
-    fun filterList(query: String) {
-        filteredData.value = repository.search(query).value
+    fun filterList(
+        query: String? = searchQuery.value,
+        categoriesList: List<String>? = categoryList.value,
+        favorite:Boolean = favoriteTab.value == true) {
+        filteredData.value = repository.search(if (query.isNullOrBlank()) "%%" else query,categoriesList,favorite)
+
+        println("query $query favorite $favorite")
+        println(categoriesList)
+        println(filteredData.value)
     }
+
+
+    override fun onDrag(firstRecipe: Recipe, secondRecipe: Recipe) = repository.swapPositions(firstRecipe,secondRecipe)
+
 }

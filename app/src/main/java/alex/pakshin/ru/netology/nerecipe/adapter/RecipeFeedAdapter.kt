@@ -61,6 +61,7 @@ class RecipeFeedAdapter(
             with(binding) {
                 recipeTitle.text = recipe.title
                 recipeAuthor.text = recipe.author
+                recipeCategory.text =recipe.category.localizedName
                 favorite.isChecked = recipe.favorite
             }
         }

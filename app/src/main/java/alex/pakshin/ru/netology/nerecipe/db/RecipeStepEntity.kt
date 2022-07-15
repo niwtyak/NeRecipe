@@ -12,7 +12,6 @@ import androidx.room.PrimaryKey
         entity = RecipeEntity::class,
         parentColumns = arrayOf("id"),
         childColumns = arrayOf("recipeId"),
-        onUpdate = ForeignKey.CASCADE,
         onDelete = ForeignKey.CASCADE
     )]
 )
@@ -23,7 +22,7 @@ class RecipeStepEntity(
     @ColumnInfo(name = "recipeId")
     val recipeId: Long,
     @ColumnInfo(name = "step")
-    val step: Int = 1,
+    val step: Long = 1,
     @ColumnInfo(name = "title")
     val title: String,
     @ColumnInfo(name = "text")

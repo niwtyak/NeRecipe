@@ -42,7 +42,7 @@
             style="@style/Widget.AppTheme.DropoutMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Category"
+            android:hint="@string/category"
             app:layout_constraintEnd_toEndOf="@id/recipeTitleEdit"
             app:layout_constraintStart_toStartOf="@id/recipeTitleEdit"
             app:layout_constraintTop_toBottomOf="@id/recipeAuthorEdit">

@@ -38,6 +38,7 @@ class RecipeContentFragment : Fragment() {
     }
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -86,18 +87,20 @@ class RecipeContentFragment : Fragment() {
             recipeViewModel.onAddNewStepClicked(
                 newStepId++,
                 if (recipeId != NEW_RECIPE_ID) recipeId else newRecipeId,
-                recycleAdapter.itemCount
+                recycleAdapter.itemCount.toLong()
             )
         }
 
         binding.saveButton.setOnClickListener {
             val category = Recipe.Companion.RecipeCategory.values()
                 .find { it.localizedName == binding.categoryItem.text.toString() }
+            val recipe = recipeViewModel.getRecipe(recipeId)
             if (
                 recipeViewModel.onSaveButtonClicked(
                     binding.recipeTitleEdit.text.toString(),
                     binding.recipeAuthorEdit.text.toString(),
-                    category
+                    category,
+                    if (recipeId == NEW_RECIPE_ID) newRecipeId else recipe?.position!!
                 )
             ) {
                 if (recipeId == NEW_RECIPE_ID) newRecipeId++
@@ -109,6 +112,10 @@ class RecipeContentFragment : Fragment() {
             ResultContract
         ) { uri ->
             uri ?: return@registerForActivityResult
+            requireContext().contentResolver.takePersistableUriPermission(uri
+                ,  Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    + Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            )
             recipeViewModel.setImage(uri)
         }
 
@@ -123,7 +130,7 @@ class RecipeContentFragment : Fragment() {
     object ResultContract : ActivityResultContract<Unit, Uri?>() {
         override fun createIntent(context: Context, input: Unit) =
             Intent(
-                Intent.ACTION_PICK,
+                Intent.ACTION_OPEN_DOCUMENT,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             )
 

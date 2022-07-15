@@ -9,6 +9,7 @@ fun RecipeEntity.toRecipe() = Recipe(
     author = author,
     category = Recipe.Companion.RecipeCategory.values().find { it.categoryName == category }
         ?: throw RuntimeException("No such category"),
+    position = position,
     favorite = favorite
 )
 
@@ -17,23 +18,24 @@ fun Recipe.toEntity() = RecipeEntity(
     title = title,
     author = author,
     category = category.categoryName,
+    position = position,
     favorite = favorite
 )
 
-fun RecipeStepEntity.toRecipeStep()=RecipeStep(
-    id= id,
-    recipeId= recipeId,
-    step=step,
-    title=title,
-    text=text,
-    image=image
+fun RecipeStepEntity.toRecipeStep() = RecipeStep(
+    id = id,
+    recipeId = recipeId,
+    step = step,
+    title = title,
+    text = text,
+    image = image
 )
 
 fun RecipeStep.toEntity() = RecipeStepEntity(
-    id= id,
-    recipeId= recipeId,
-    step=step,
-    title=title?:"",
-    text=text?:"",
+    id = id,
+    recipeId = recipeId,
+    step = step,
+    title = title ?: "",
+    text = text ?: "",
     image = image
 )

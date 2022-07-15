@@ -24,7 +24,7 @@ class RecipeStepsEditAdapter(
 
         init {
             binding.imageSelectButton.setOnClickListener {
-                listener.onImageSelectClicked(adapterPosition)
+                listener.onImageSelectClicked(adapterPosition.toLong())
             }
         }
 

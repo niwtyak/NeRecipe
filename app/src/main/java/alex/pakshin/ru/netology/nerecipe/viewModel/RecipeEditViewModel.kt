@@ -32,10 +32,10 @@ class RecipeEditViewModel(
 
     private var currentRecipe: Recipe? = null
 
-    private var currentPosition: Int? = null
+    private var currentPosition: Long? = null
 
 
-    override fun onImageSelectClicked(position: Int) {
+    override fun onImageSelectClicked(position: Long) {
         currentPosition = position
         selectImageEvent.call()
     }
@@ -43,7 +43,8 @@ class RecipeEditViewModel(
     fun onSaveButtonClicked(
         title: String,
         author: String,
-        category: Recipe.Companion.RecipeCategory?
+        category: Recipe.Companion.RecipeCategory?,
+        position: Long
     ): Boolean {
         if (title.isBlank() || author.isBlank()) {
             Toast.makeText(getApplication(), "Recipe has empty fields!", Toast.LENGTH_LONG).show()
@@ -67,8 +68,10 @@ class RecipeEditViewModel(
         val recipe = currentRecipe?.copy(
             title = title,
             author = author,
-            category = category
-        ) ?: Recipe(RecipeContentFragment.NEW_RECIPE_ID, title, author, category)
+            category = category,
+            position = position
+        ) ?: Recipe(RecipeContentFragment.NEW_RECIPE_ID, title, author, category, position)
+
         println(recipe)
         repository.save(recipe)
         println(steps.value)
@@ -85,7 +88,7 @@ class RecipeEditViewModel(
         return true
     }
 
-    fun onAddNewStepClicked(globalId: Long, recipeId: Long, position: Int) {
+    fun onAddNewStepClicked(globalId: Long, recipeId: Long, position: Long) {
 
         val newStep = listOf(
             RecipeStep(
@@ -109,11 +112,8 @@ class RecipeEditViewModel(
         return result
     }
 
-    override fun onSwipe(position: Int) {
+    override fun onSwipe(position: Long) {
         if (steps.value?.count()!! > 1) {
-            if (currentRecipe != null)
-                repository.deleteStep(steps.value?.find { it.step == position }?.id!!)
-
             steps.value = steps.value?.filter { it.step != position }
                 ?.map { if (it.step > position) it.copy(step = it.step - 1) else it }
         } else

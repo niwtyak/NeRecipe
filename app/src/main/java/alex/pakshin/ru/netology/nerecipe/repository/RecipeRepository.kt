@@ -22,6 +22,8 @@ interface RecipeRepository {
 
     fun deleteStep(stepId:Long)
 
-    fun search(searchQuery:String):LiveData<List<Recipe>>
+    fun search(searchQuery:String?,categoriesList:List<String>?,favorite:Boolean):List<Recipe>
+
+    fun swapPositions(firstRecipe: Recipe, secondRecipe: Recipe)
 
 }
