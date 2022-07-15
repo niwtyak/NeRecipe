@@ -9,12 +9,13 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filterGroup"
-        android:padding="@dimen/common_spacing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/common_spacing"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/recipeRecycleView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectionRequired="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_european"
